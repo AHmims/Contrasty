@@ -4,12 +4,18 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "rebuild": "npm rebuild --runtime=electron --target=7.1.7 --disturl=https://atom.io/download/atom-shell --abi=72"
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "robotjs": "^0.6.0",
+    "tinycolor2": "^1.4.1"
+  },
   "devDependencies": {
-    "electron": "^7.1.7",
+    "electron": "7.1.7",
+    "electron-rebuild": "^1.8.8",
     "electron-reload": "^1.5.0"
   }
 }

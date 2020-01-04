@@ -6,15 +6,17 @@ const path = require('path');
 
 let mainWindow;
 
-require('electron-reload')(path.join(__dirname, "app"));
+require('electron-reload')(__dirname);
 
 function createWindow() {
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        /*webPreferences: {
-              preload: path.join(__dirname, 'preload.js')
-        }*/
+        width: 250,
+        height: 325,
+        // frame: false,
+        webPreferences: {
+            preload: path.join(__dirname, 'nodeIntegrations/preload.js')
+            // nodeIntegration: true
+        }
     })
     mainWindow.loadFile('./app/html/index.html');
     mainWindow.webContents.openDevTools({

@@ -1,0 +1,2 @@
+https://github.com/octalmage/robotjs/issues/190#issuecomment-245574428
+https://github.com/octalmage/robotjs/wiki/Electron
