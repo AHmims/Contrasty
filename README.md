@@ -4,6 +4,13 @@
 ![Day 1](https://raw.githubusercontent.com/AHmims/Contrasty/master/screenshots/day1.png)
 
 **Day 2:**  
+So far :
+- The scoring system works.
+- Main window UI is done.
+- Colors changes dynamically.
+- The script determins which color is the darkest/lightest then changes the color inputs accordingly to provide a correct ratio.
+- Clicking on the star icon changes it.
+
 A tricky part was to color svg icons imported via an <img> ag through css.
 The hardest part about today which took me about 4 hours to figure out was a way fire an event when the mouse moves when it's out the window, there exists some native modules that doo the trick but I couldn't get them to work, the only native that works for me is RobotJs that I'll be using to get the color on from the cursor position.
 
