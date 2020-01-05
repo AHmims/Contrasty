@@ -23,6 +23,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const _CONTRAST_RATIO = getContrastRatio(colors);
     //Set Score according to contrast ratio
     setScore(_CONTRAST_RATIO);
+    // 
+    // Open a color picker when the Feather is clicked
+    const _PICKER = document.getElementsByClassName('eyeDrope');
+    Array.from(_PICKER).forEach(function (element) {
+        element.addEventListener('click', getColor);
+    });
 });
 // Change root colors
 function changeColor(colors) {
@@ -94,4 +100,24 @@ function setScore(contrast) {
     // 
     document.getElementById('preview-class').innerText = res[0];
     document.getElementById('preview-score').innerText = `${contrast.toFixed(2)} ${res[1]}`;
+}
+// Get Color from Mouse Pos
+async function getColor() {
+    let string = this.getAttribute('class');
+    string = string.slice(string.length - 2, string.length);
+    const _POISTION = string == 'bg' ? 1 : 0;
+    // 
+    let rrr = await alpha();
+    // 
+    console.log(rrr);
+}
+// 
+async function alpha() {
+    const robot = require("robotjs");
+    const {
+        ipcRenderer
+    } = require('electron');
+    ipcRenderer.send('test');
+
+    return hex;
 }
