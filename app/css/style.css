@@ -1,3 +1,18 @@
+:root {
+    /*  */
+    --foreground: #e7c296;
+    --background: #29344b;
+    /*  */
+    --foregroundFilter: ;
+    --backgroundFilter: ;
+}
+
+@font-face {
+    font-family: Roboto-Black;
+    src: url('../font/Roboto-Black.ttf');
+}
+
+/*  */
 html,
 body {
     padding: 0;
@@ -5,6 +20,7 @@ body {
     /*  */
     width: 100%;
     height: 100%;
+    /*  */
 }
 
 /*  */
@@ -14,6 +30,8 @@ body {
     width: 100%;
     height: 100%;
     /*  */
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 /*  */
@@ -24,6 +42,7 @@ body {
     width: 100%;
     height: 70%;
     /*  */
+    -webkit-app-region: drag;
 }
 
 #content {
@@ -32,14 +51,14 @@ body {
     /*  */
     width: 80%;
     height: 100%;
-    background-color: wheat;
+    /* background-color: wheat; */
 }
 
 #menu {
     display: flex;
     flex-direction: column;
     flex: auto;
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
 }
 
 /*  */
@@ -54,9 +73,71 @@ body {
 .colorInput {
     flex: 1;
     display: flex;
-    background-color: tomato;
+    flex-direction: row;
+    align-items: center;
+    /*  */
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
-.colorInput h3 {
-    margin: 0;
+/*  */
+/*  */
+.fr-clr {
+    background-color: var(--foreground);
+}
+
+.bg-clr {
+    background-color: var(--background);
+}
+
+.clr-fr {
+    color: var(--foreground);
+}
+
+.clr-bg {
+    color: var(--background);
+    fill: var(--background);
+}
+
+.svg-fr {
+    filter: var(--foregroundFilter);
+}
+
+.svg-bg {
+    filter: var(--backgroundFilter);
+}
+
+/*  */
+/*  */
+.eyeDrope {
+    height: 36px;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.clr-input {
+    padding: 0;
+    /* height: auto; */
+    height: 20px;
+    width: 120px;
+    background: none;
+    border: none;
+    outline: none;
+    /*  */
+    font-size: 25px;
+    margin-left: 10px;
+    font-family: Roboto-Black;
+    letter-spacing: 1px;
+}
+
+.clipboard,
+.edit {
+    height: 20px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.clipboard {
+    margin-right: 1px;
 }
