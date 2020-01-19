@@ -41,11 +41,11 @@ window.addEventListener('DOMContentLoaded', () => {
     let picker;
     document.getElementById('eyeDrope-top').addEventListener('click', () => {
         picker = 'background';
-        getColor('eyeDrope svg-fr');
+        getColor();
     });
     document.getElementById('eyeDrope-bot').addEventListener('click', () => {
         picker = 'foreground';
-        getColor('eyeDrope svg-bg');
+        getColor();
     });
     ipcRenderer.on('getColor', (event, color) => {
         let pos = 0;
@@ -132,7 +132,7 @@ function setScore(contrast) {
     document.getElementById('preview-score').innerText = `${contrast.toFixed(2)} ${res[1]}`;
 }
 // Get Color from Mouse Pos
-async function getColor(string) {
+/*async function getColor(string) {
     // let string = this.getAttribute('class');
     string = string.slice(string.length - 2, string.length);
     const _POISTION = string == 'bg' ? 1 : 0;
@@ -140,12 +140,10 @@ async function getColor(string) {
     let rrr = await alpha();
     // 
     // console.log(rrr);
-}
+}*/
 // 
-async function alpha() {
+function getColor() {
     const robot = require("robotjs");
     const _MOUSE = robot.getMousePos();
     ipcRenderer.send('test', [_MOUSE.x, _MOUSE.y]);
-
-    return 'slm';
 }
