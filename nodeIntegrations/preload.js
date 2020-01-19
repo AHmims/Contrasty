@@ -29,14 +29,6 @@ window.addEventListener('DOMContentLoaded', () => {
     setScore(_CONTRAST_RATIO);
     // 
     // Open a color picker when the Feather is clicked
-    /*const _PICKER = document.getElementsByClassName('eyeDrope');
-    Array.from(_PICKER).forEach((element) => {
-        element.addEventListener('click', getColor);
-        // Listen to an evnt from the main window when the mouse moves
-        // that return changed color
-    });*/
-    // 
-    // Open a color picker when the Feather is clicked
     // Change color IRL
     let picker;
     document.getElementById('eyeDrope-top').addEventListener('click', () => {
@@ -132,16 +124,6 @@ function setScore(contrast) {
     document.getElementById('preview-score').innerText = `${contrast.toFixed(2)} ${res[1]}`;
 }
 // Get Color from Mouse Pos
-/*async function getColor(string) {
-    // let string = this.getAttribute('class');
-    string = string.slice(string.length - 2, string.length);
-    const _POISTION = string == 'bg' ? 1 : 0;
-    // 
-    let rrr = await alpha();
-    // 
-    // console.log(rrr);
-}*/
-// 
 function getColor() {
     const robot = require("robotjs");
     const _MOUSE = robot.getMousePos();
