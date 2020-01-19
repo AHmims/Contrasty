@@ -1,7 +1,6 @@
 const {
     ipcRenderer
 } = require('electron');
-
 window.addEventListener('DOMContentLoaded', () => {
     // let dd = require('robotjs');
     // this value will be taken from a json file
@@ -62,6 +61,9 @@ window.addEventListener('DOMContentLoaded', () => {
         clipPos = 1;
         inputCopy(clipPos);
     });
+    // 
+    // Open a devtools color picker
+    // colorPicker();
 
 });
 // Change root colors
@@ -147,3 +149,4 @@ function inputCopy(pos) {
     _VALUE.select();
     document.execCommand("copy");
 }
+// 
