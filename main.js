@@ -10,7 +10,7 @@ saveData();*/
 
 let mainWindow, colorWin = null;
 
-require('electron-reload')(__dirname);
+// require('electron-reload')(__dirname);
 
 function createWindow() {
     mainWindow = new BrowserWindow({

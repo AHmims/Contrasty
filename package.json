@@ -1,13 +1,24 @@
 {
   "name": "contrasty",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "main.js",
   "scripts": {
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
     "start": "electron .",
     "rebuild": "npm rebuild --runtime=electron --target=7.1.7 --disturl=https://atom.io/download/atom-shell --abi=72"
   },
-  "author": "",
+  "build": {
+    "appId": "com.electron.contrasty",
+    "productName": "Contrasty",
+    "compression": "maximum",
+    "copyright": "Copyright @3li",
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "author": "Ali hmims",
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
@@ -17,6 +28,7 @@
   },
   "devDependencies": {
     "electron": "7.1.7",
+    "electron-builder": "^22.2.0",
     "electron-rebuild": "^1.8.8",
     "electron-reload": "^1.5.0"
   }
