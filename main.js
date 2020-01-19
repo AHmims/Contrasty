@@ -17,6 +17,8 @@ function createWindow() {
         width: 250,
         height: 325,
         frame: false,
+        maximizable: false,
+        resizable: false,
         alwaysOnTop: true,
         transparent: true,
         webPreferences: {
@@ -25,9 +27,9 @@ function createWindow() {
         }
     })
     mainWindow.loadFile('./app/html/index.html');
-    mainWindow.webContents.openDevTools({
+    /*mainWindow.webContents.openDevTools({
         mode: "detach"
-    });
+    });*/
 
     mainWindow.on('closed', function () {
         mainWindow = null
@@ -48,6 +50,8 @@ function colorWindow(x, y) {
         width: 80,
         height: 80,
         frame: false,
+        maximizable: false,
+        resizable: false,
         transparent: true,
         alwaysOnTop: true,
         webPreferences: {
@@ -65,9 +69,9 @@ function colorWindow(x, y) {
     colorWin.on('closed', function () {
         colorWin = null;
     })
-    colorWin.webContents.openDevTools({
+    /*colorWin.webContents.openDevTools({
         mode: "detach"
-    });
+    });*/
 }
 // 
 function saveData(data) {
