@@ -51,6 +51,18 @@ window.addEventListener('DOMContentLoaded', () => {
         // 
         setScore(getContrastRatio(colors));
     });
+    // 
+    // Copy input value to clipboard
+    let clipPos;
+    document.getElementsByClassName('clipboard')[0].addEventListener('click', () => {
+        clipPos = 0;
+        inputCopy(clipPos);
+    });
+    document.getElementsByClassName('clipboard')[1].addEventListener('click', () => {
+        clipPos = 1;
+        inputCopy(clipPos);
+    });
+
 });
 // Change root colors
 function changeColor(colors) {
@@ -128,4 +140,10 @@ function getColor() {
     const robot = require("robotjs");
     const _MOUSE = robot.getMousePos();
     ipcRenderer.send('test', [_MOUSE.x, _MOUSE.y]);
+}
+// Save input value to clipboard
+function inputCopy(pos) {
+    const _VALUE = document.getElementsByClassName('clr-input')[pos];
+    _VALUE.select();
+    document.execCommand("copy");
 }

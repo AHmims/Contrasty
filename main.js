@@ -4,6 +4,9 @@ const {
     ipcMain
 } = require('electron');
 const path = require('path');
+/*const storage = require('electron-json-storage');
+const defaultDataPath = storage.getDefaultDataPath();
+saveData();*/
 
 let mainWindow, colorWin = null;
 
@@ -66,6 +69,14 @@ function colorWindow(x, y) {
         mode: "detach"
     });
 }
+// 
+function saveData(data) {
+
+    /*storage.set('foobar', data, function (error) {
+        if (error) throw error;
+    });*/
+}
+// 
 app.on('ready', createWindow)
 
 app.on('window-all-closed', function () {
