@@ -19,10 +19,10 @@ body {
 
 @keyframes rainbow {
     0% {
-        border-color: hsl(0, 100%, 50%);
+        border-color: black;
     }
 
     100% {
-        border-color: hsl(255, 100%, 50%);
+        border-color: white;
     }
 }

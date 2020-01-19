@@ -171,6 +171,7 @@ body {
     margin-left: 10px;
     font-family: Roboto-Black;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .clipboard,

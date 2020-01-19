@@ -38,11 +38,9 @@ function createWindow() {
 }
 
 function colorWindow(x, y) {
-    if (colorWin) {
-        console.log(colorWin);
+    if (colorWin)
         colorWin.close();
-        // colorWin = null;
-    }
+    // 
     colorWin = new BrowserWindow({
         width: 80,
         height: 80,
@@ -58,14 +56,11 @@ function colorWindow(x, y) {
     ipcMain.on("moved", (event, data) => {
         colorWin.setPosition(data[0], data[1]);
     });
-    ipcMain.on('close', (event) => {
-        if (colorWin)
-            colorWin.close();
-        // colorWin = null;
-    });
+    // 
     colorWin.loadFile('./app/html/fuck.html');
-    mainWindow.on('closed', function () {
-        mainWindow = null
+    // 
+    colorWin.on('closed', function () {
+        colorWin = null;
     })
     colorWin.webContents.openDevTools({
         mode: "detach"

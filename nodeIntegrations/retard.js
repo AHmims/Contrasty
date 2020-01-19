@@ -10,6 +10,8 @@ window.addEventListener('DOMContentLoaded', () => {
         ipcRenderer.send('colorUpdated', hex);
     });
     window.addEventListener('click', () => {
-        ipcRenderer.send('close');
+        const remote = require('electron').remote;
+        remote.getCurrentWindow().close();
+        // ipcRenderer.send('close');
     });
 });
