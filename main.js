@@ -48,7 +48,7 @@ function colorWindow(x, y) {
         transparent: true,
         alwaysOnTop: true,
         webPreferences: {
-            preload: path.join(__dirname, 'nodeIntegrations/retard.js')
+            preload: path.join(__dirname, 'nodeIntegrations/picker.js')
             // nodeIntegration: true
         }
     })
@@ -57,7 +57,7 @@ function colorWindow(x, y) {
         colorWin.setPosition(data[0], data[1]);
     });
     // 
-    colorWin.loadFile('./app/html/fuck.html');
+    colorWin.loadFile('./app/html/picker.html');
     // 
     colorWin.on('closed', function () {
         colorWin = null;
