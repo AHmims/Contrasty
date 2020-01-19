@@ -5,7 +5,7 @@ const {
 } = require('electron');
 const path = require('path');
 
-let mainWindow, colorWin;
+let mainWindow, colorWin = null;
 
 require('electron-reload')(__dirname);
 
@@ -29,15 +29,23 @@ function createWindow() {
     mainWindow.on('closed', function () {
         mainWindow = null
     })
-    ipcMain.on("test", () => {
-        colorWindow();
+    ipcMain.on("test", (event, data) => {
+        colorWindow(...data);
+    });
+    ipcMain.on('colorUpdated', (event, color) => {
+        mainWindow.webContents.send('getColor', color);
     });
 }
 
-function colorWindow() {
+function colorWindow(x, y) {
+    if (colorWin) {
+        console.log(colorWin);
+        colorWin.close();
+        // colorWin = null;
+    }
     colorWin = new BrowserWindow({
-        width: 90,
-        height: 90,
+        width: 80,
+        height: 80,
         frame: false,
         transparent: true,
         alwaysOnTop: true,
@@ -46,10 +54,19 @@ function colorWindow() {
             // nodeIntegration: true
         }
     })
+    colorWin.setPosition(x - 25, y - 25);
     ipcMain.on("moved", (event, data) => {
         colorWin.setPosition(data[0], data[1]);
     });
+    ipcMain.on('close', (event) => {
+        if (colorWin)
+            colorWin.close();
+        // colorWin = null;
+    });
     colorWin.loadFile('./app/html/fuck.html');
+    mainWindow.on('closed', function () {
+        mainWindow = null
+    })
     colorWin.webContents.openDevTools({
         mode: "detach"
     });

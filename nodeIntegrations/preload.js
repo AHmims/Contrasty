@@ -1,3 +1,7 @@
+const {
+    ipcRenderer
+} = require('electron');
+
 window.addEventListener('DOMContentLoaded', () => {
     // let dd = require('robotjs');
     // this value will be taken from a json file
@@ -25,9 +29,35 @@ window.addEventListener('DOMContentLoaded', () => {
     setScore(_CONTRAST_RATIO);
     // 
     // Open a color picker when the Feather is clicked
-    const _PICKER = document.getElementsByClassName('eyeDrope');
-    Array.from(_PICKER).forEach(function (element) {
+    /*const _PICKER = document.getElementsByClassName('eyeDrope');
+    Array.from(_PICKER).forEach((element) => {
         element.addEventListener('click', getColor);
+        // Listen to an evnt from the main window when the mouse moves
+        // that return changed color
+    });*/
+    // 
+    // Open a color picker when the Feather is clicked
+    // Change color IRL
+    let picker;
+    document.getElementById('eyeDrope-top').addEventListener('click', () => {
+        picker = 'background';
+        getColor('eyeDrope svg-fr');
+    });
+    document.getElementById('eyeDrope-bot').addEventListener('click', () => {
+        picker = 'foreground';
+        getColor('eyeDrope svg-bg');
+    });
+    ipcRenderer.on('getColor', (event, color) => {
+        let pos = 0;
+        if (picker == 'foreground') pos = 1;
+        document.getElementsByClassName('clr-input')[pos].value = "#" + color;
+        colors.background = document.getElementsByClassName('clr-input')[0].value;
+        colors.foreground = document.getElementsByClassName('clr-input')[1].value;
+        // 
+        changeColor(colors);
+        changeSVGColors(colors);
+        // 
+        setScore(getContrastRatio(colors));
     });
 });
 // Change root colors
@@ -102,22 +132,20 @@ function setScore(contrast) {
     document.getElementById('preview-score').innerText = `${contrast.toFixed(2)} ${res[1]}`;
 }
 // Get Color from Mouse Pos
-async function getColor() {
-    let string = this.getAttribute('class');
+async function getColor(string) {
+    // let string = this.getAttribute('class');
     string = string.slice(string.length - 2, string.length);
     const _POISTION = string == 'bg' ? 1 : 0;
     // 
     let rrr = await alpha();
     // 
-    console.log(rrr);
+    // console.log(rrr);
 }
 // 
 async function alpha() {
     const robot = require("robotjs");
-    const {
-        ipcRenderer
-    } = require('electron');
-    ipcRenderer.send('test');
+    const _MOUSE = robot.getMousePos();
+    ipcRenderer.send('test', [_MOUSE.x, _MOUSE.y]);
 
-    return hex;
+    return 'slm';
 }

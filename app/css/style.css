@@ -155,6 +155,7 @@ body {
     height: 36px;
     user-select: none;
     -webkit-user-drag: none;
+    cursor: pointer;
 }
 
 .clr-input {
